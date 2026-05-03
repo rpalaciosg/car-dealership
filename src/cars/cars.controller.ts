@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { CarsService } from './cars.service';
 
 @Controller('cars')
@@ -11,9 +11,10 @@ export class CarsController {
   }
 
   @Get(':id')
-  getCarById(@Param('id') id: string) {
-    console.log({ id: +id });
-    const carName = this.carsService.findById(Number(id));
+  getCarById(@Param('id', ParseIntPipe) id: number) {
+    console.log({ id: id });
+    // throw new Error('Auxilio error no controlado en mi backend');
+    const carName = this.carsService.findById(id);
     return { carName };
   }
 }
