@@ -8,11 +8,14 @@ import {
   Body,
   Delete,
   ParseUUIDPipe,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { CarsService } from './cars.service';
 import { CreateCarDto } from './dto/create-car.dto';
 
 @Controller('cars')
+@UsePipes(ValidationPipe)
 export class CarsController {
   constructor(private readonly carsService: CarsService) {}
 
@@ -30,9 +33,7 @@ export class CarsController {
   }
 
   @Post()
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   createCar(@Body() createCarDto: CreateCarDto) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return createCarDto;
   }
 
