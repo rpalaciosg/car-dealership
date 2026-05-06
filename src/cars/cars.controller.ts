@@ -7,6 +7,7 @@ import {
   Patch,
   Body,
   Delete,
+  ParseUUIDPipe,
 } from '@nestjs/common';
 import { CarsService } from './cars.service';
 
@@ -20,7 +21,7 @@ export class CarsController {
   }
 
   @Get(':id')
-  getCarById(@Param('id') id: string) {
+  getCarById(@Param('id', ParseUUIDPipe) id: string) {
     console.log({ id: id });
     // throw new Error('Auxilio error no controlado en mi backend');
     const carName = this.carsService.findById(id);
