@@ -10,6 +10,7 @@ import {
   ParseUUIDPipe,
 } from '@nestjs/common';
 import { CarsService } from './cars.service';
+import { CreateCarDto } from './dto/create-car.dto';
 
 @Controller('cars')
 export class CarsController {
@@ -30,13 +31,9 @@ export class CarsController {
 
   @Post()
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  createCar(@Body() body: any) {
-    // return {
-    //   ok: true,
-    //   method: 'POST',
-    // };
+  createCar(@Body() createCarDto: CreateCarDto) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    return body;
+    return createCarDto;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
