@@ -13,6 +13,7 @@ import {
 } from '@nestjs/common';
 import { CarsService } from './cars.service';
 import { CreateCarDto } from './dto/create-car.dto';
+import { UpdateCarDto } from './dto/update-car.dto';
 
 @Controller('cars')
 // @UsePipes(ValidationPipe) //--> este es validation pipe a nivel de clase
@@ -41,12 +42,11 @@ export class CarsController {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   @Patch(':id')
   updateCar(
-    @Param('id', ParseIntPipe) id: number,
-    @Body()
-    body: any,
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() updateCarDto: UpdateCarDto,
   ) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    return body;
+    return updateCarDto;
   }
 
   @Delete(':id')
