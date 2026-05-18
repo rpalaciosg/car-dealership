@@ -34,7 +34,8 @@ export class CarsController {
 
   @Post()
   createCar(@Body() createCarDto: CreateCarDto) {
-    return createCarDto;
+    // return createCarDto;
+    return this.carsService.create(createCarDto);
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
