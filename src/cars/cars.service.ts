@@ -57,4 +57,10 @@ export class CarsService {
     });
     return carDB; // carro actualizado
   }
+
+  public delete(id: string): void {
+    this.findById(id);
+    this.cars.filter((car) => car.id !== id);
+    return;
+  }
 }
