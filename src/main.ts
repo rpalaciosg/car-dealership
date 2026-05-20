@@ -8,6 +8,9 @@ async function main() {
     new ValidationPipe({
       whitelist: true,
       forbidNonWhitelisted: true,
+      transformOptions: {
+        exposeUnsetFields: false,
+      },
     }),
   );
 

@@ -46,7 +46,8 @@ export class CarsController {
     @Body() updateCarDto: UpdateCarDto,
   ) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    return updateCarDto;
+    // return updateCarDto;
+    return this.carsService.update(id, updateCarDto);
   }
 
   @Delete(':id')
